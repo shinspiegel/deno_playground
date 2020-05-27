@@ -6,13 +6,11 @@ Before running this application, create a SECRET.ts file on the root on this app
 
 ```ts
 //SECRET.ts
-export const MONGO_URI = "mongoURI"; // This is the mongo URI as string
+export const POSTGRESS_URI = "a uri for a postgresql database"; // This is the mongo URI as string
 ```
-
-To run this app just use the following, it will download the binary plugin for `deno_mongo`, so be patiente.
 
 ```sh
-deno run --allow-net --allow-write --allow-read --allow-plugin --unstable index.ts
+deno run --allow-net index.ts
 ```
 
-As a REST api it will need `allow-net` flag. MongoDB need the rest of the flags.
+As a REST api it will need `allow-net` flag.
