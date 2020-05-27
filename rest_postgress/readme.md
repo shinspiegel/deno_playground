@@ -1,6 +1,6 @@
-# Deno API with mongoDB
+# Deno API with Postgress
 
-This a practice project to create a integration between mongodb and Deno application using OAK framework. This is a very simple yet very surprising application.
+This a practice project to create a integration between postgress and Deno application using OAK framework. This is a very simple yet very surprising application.
 
 Before running this application, create a SECRET.ts file on the root on this applications following the exemple:
 
