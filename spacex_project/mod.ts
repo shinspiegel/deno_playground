@@ -1,6 +1,8 @@
 import log from "./src/logger.ts";
 import { iFlight } from "./types.ts";
 
+log.warning("HARD");
+
 async function downloadLaunchData() {
     log.info("Fetching data");
     const url = "https://api.spacexdata.com/v3/launches";
