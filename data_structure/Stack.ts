@@ -1,4 +1,4 @@
-import Node from "./Node.ts";
+import { DoubleNode as Node } from "./Node.ts";
 
 export default class Stack<T> {
     constructor(

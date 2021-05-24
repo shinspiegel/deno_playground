@@ -1,13 +1,15 @@
 #!/usr/bin/env deno run
 
-/**
- * Stack is a LIFO
- * Last in
- * First out
- */
-
 import Stack from "./Stack.ts";
+import LinkedList from "./LinkedList.ts";
 
-const stack = new Stack<string>();
+const list = new LinkedList<number>();
+list.insertFirst(0);
+list.insertFirst(1);
+list.insertFirst(2);
+list.insertFirst(3);
+list.insertFirst(4);
 
-stack.push("Another value");
+list.insertAt(2, 999)
+
+list.showList()
