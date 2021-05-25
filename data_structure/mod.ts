@@ -1,15 +1,19 @@
 #!/usr/bin/env deno run
 
 import Stack from "./Stack.ts";
+import Queue from "./Queue.ts";
 import LinkedList from "./LinkedList.ts";
 
-const list = new LinkedList<number>();
-list.insertFirst(0);
-list.insertFirst(1);
-list.insertFirst(2);
-list.insertFirst(3);
-list.insertFirst(4);
+const t = new Stack<number>();
 
-list.insertAt(2, 999)
+t.insert(1);
+t.insert(2);
+t.insert(3);
 
-list.showList()
+console.log(t);
+
+console.log(t.peek());
+console.log(t.remove());
+console.log(t.peek());
+
+console.log(t);
