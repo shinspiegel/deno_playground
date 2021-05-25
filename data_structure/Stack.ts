@@ -1,57 +1,45 @@
-import { DoubleNode as Node } from "./Node.ts";
+import { DoubleNode } from "./Node.ts";
 
 export default class Stack<T> {
     constructor(
-        private list: Node<T>[] = [],
-        private count: number = -1,
-        private maxSize: number = 5
+        private head: DoubleNode<T> | null = null,
+        private count: number = 0
     ) {}
 
-    public listAll() {
-        this.list.forEach((i) => console.log(i));
-    }
+    insert(value: T) {
+        const newNode = new DoubleNode(value);
 
-    public isEmpty() {
-        return this.count <= -1;
-    }
-
-    public isFull() {
-        return this.count >= this.maxSize;
-    }
-
-    public push(value: T) {
-        if (this.isFull()) {
-            throw new Error("Failed, stack is full");
+        if (!this.head) {
+            this.head = newNode;
+        } else {
+            this.head.prev = newNode;
+            newNode.next = this.head;
+            this.head = newNode;
         }
-
-        const currentNode = new Node<T>(value);
-
-        if (!this.isEmpty()) {
-            const prevNode = this.list[this.count];
-            currentNode.prev = prevNode;
-            prevNode.next = currentNode;
-        }
-
-        this.count += 1;
-        this.list = [...this.list, currentNode];
-        return;
     }
 
-    public pop() {
-        if (this.isEmpty()) {
-            throw new Error("Failed, stack is empty");
-        }
-
-        this.count -= 1;
-        this.list.pop();
-        this.list[this.count].next = null;
+    size(): number {
+        return this.count;
     }
 
-    public get peek(): Node<T> {
-        if (this.count <= -1) {
-            throw new Error("Failed, stack is empty");
-        }
+    remove(): T | undefined {
+        if (this.head) {
+            const currentHead = this.head;
 
-        return this.list[this.count];
+            if (this.head.next) {
+                this.head = this.head.next;
+                this.head.prev = null;
+            } else {
+                this.head = null;
+            }
+
+            return currentHead.value;
+        }
+    }
+
+    peek(): T | undefined {
+        if (this.head) {
+            return this.head.value;
+        }
     }
 }
