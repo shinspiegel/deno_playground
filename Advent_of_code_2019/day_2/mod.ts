@@ -1,33 +1,14 @@
 const input: string = await Deno.readTextFile("input");
-const data: string[] = input.split("\n");
-const values = data.map((s) => Number(s));
 
-function show_fuel() {
-  const result = values.map((v) => Math.floor(v / 3) - 2);
-  console.log(
-    "Fuel total: ",
-    result.reduce((acc, curr) => acc + curr, 0)
-  );
-}
+import IntCode from "./IntCode.ts";
 
-function calculate_fuel_by_value(value: number) {
-  let result = 0;
+const target = 19690720;
 
-  while (value > 0) {
-    const calculated = Math.floor(value / 3) - 2;
-    value = calculated;
-
-    if (calculated > 0) {
-      result += calculated;
+for (let noum = 0; noum <= 99; noum++) {
+  for (let verb = 0; verb < 99; verb++) {
+    const result = new IntCode(input, noum, verb).start();
+    if (result === target) {
+      console.log("Found!", result, noum, verb, 100 * noum + verb);
     }
   }
-
-  return result;
 }
-
-let result = 0;
-values.forEach((v) => {
-  result += calculate_fuel_by_value(v);
-});
-
-console.log("Result is: ", result);
